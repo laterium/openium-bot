@@ -1,0 +1,13 @@
+{
+    "badWords": [
+        "badword1",
+        "badword2",
+        "badword3"
+    ],
+    "blockedWregex": [
+        "forbiddenurl1",
+        "forbiddenurl2",
+        "forbiddenurl3",
+        "https://discord.com/invite/"
+    ]
+}
