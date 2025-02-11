@@ -36,8 +36,6 @@ module.exports = {
                 timeout: 20000
             });
 
-            console.log(response.data);
-
             if (!response.data.choices || response.data.choices.length === 0) {
                 throw new Error("No choices returned from API.");
             }
@@ -63,3 +61,4 @@ module.exports = {
         }
     }
 };
+
