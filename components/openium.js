@@ -2,6 +2,11 @@
 
 require('dotenv').config();
 const app = require('../app.js');
+const { Events } = require('discord.js');
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
 const mMysql = require('../mysql');
 
 const _prefix = process.env.APP_PREFIX || '!';
@@ -143,11 +148,6 @@ app.on("messageCreate", async (message) => {
 });
 
 /// @system : Emoji & Sticker Add
-const { Events } = require('discord.js');
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
-
 app.on(Events.MessageCreate, async (message) => {
     if (message.author.bot) return;
 
