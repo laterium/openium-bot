@@ -8,6 +8,7 @@
         "forbiddenurl1",
         "forbiddenurl2",
         "forbiddenurl3",
-        "https://discord.com/invite/"
+        "https://discord.com/invite/",
+        "https://discord.com/api/webhooks/"
     ]
 }
