@@ -43,10 +43,7 @@ module.exports = {
             let reply = response.data.choices[0].message.content;
 
             if (reply.length > 2000) {
-                const chunks = reply.match(/.{1,2000}/g) || [];
-                for (const chunk of chunks) {
-                    await interaction.followUp(chunk);
-                }
+                await interaction.editReply('Please use simple Question!');
             } else {
                 await interaction.editReply(reply);
             }
