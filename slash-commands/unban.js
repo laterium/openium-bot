@@ -12,7 +12,6 @@ module.exports = {
                 .setDescription('Select a user from the ban list')
                 .setAutocomplete(true)
                 .setRequired(true)),
-
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused();
         try {
