@@ -1,6 +1,7 @@
 /// @Slash.Commands : ban.js
 
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { MessageFlags } = require('discord-api-types/v10'); 
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,9 +19,8 @@ module.exports = {
             option.setName('duration')
                 .setDescription('Ban duration in minutes (leave empty for permanent ban)')
                 .setRequired(false)),
-
     async execute(interaction) {
-        await interaction.deferReply({ ephemeral: true });
+        await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
         if (!interaction.member.permissions.has(PermissionFlagsBits.BanMembers)) {
             return interaction.editReply({ content: 'You do not have permission to use this command.' });
