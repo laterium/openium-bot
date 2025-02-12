@@ -36,6 +36,10 @@ app.on('guildCreate', async (guild) => {
     await deployCommands(guild.id);
 });
 
+app.on('guildDelete', async (guild) => {
+    console.log(`(js) (deploy.js) Bot removed from guild: ${guild.id}`.blue);
+});
+
 (async () => {
     try {
         console.log('(js) (deploy.js) Fetching bot guilds...'.cyan);
