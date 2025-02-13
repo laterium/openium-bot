@@ -9,7 +9,7 @@ This repository contains a Discord bot built using Node.js, supporting both Java
 - Node.js installed on your system.
 - A Discord bot token from the [Discord Developer Portal](https://discord.com/developers/applications).
 - MySQL database setup (local or remote).
-- Groq API key for Llama integration.
+- Groq API key for Groq integration.
 
 ### Installation
 
@@ -22,7 +22,7 @@ This repository contains a Discord bot built using Node.js, supporting both Java
 2. **Set Up Configuration Files**  
    - Rename `.env.example` to `.env`.
    - Fill in the necessary details in this files:
-     - `.env`: Add your Discord bot token, application ID, MySQL database credentials, and Groq API key for Llama.
+     - `.env`: Add your Discord bot token, application ID, MySQL database credentials, and Groq API key for Groq.
      - `config.json`: Adjust the settings according to your preferences.
 
 3. **Database Setup**  
@@ -40,12 +40,12 @@ This repository contains a Discord bot built using Node.js, supporting both Java
      - `__build-npm.bat`: Installs necessary dependencies.
      - `__start-bot.bat`: Starts the bot & deploy.
 
-## A.I Llama Configuration
+## A.I Groq Configuration
 
-To enable Llama (Groq) integration, add the following variables to your `.env` file:
+To enable Groq (Groq) integration, add the following variables to your `.env` file:
 ```ini
-LLAMA_API_MODEL=YOUR_GROQ_API_MODEL
-LLAMA_API_KEY=YOUR_GROQ_API_KEY_HERE
+GROQ_API_MODEL=YOUR_GROQ_API_MODEL
+GROQ_API_KEY=YOUR_GROQ_API_KEY_HERE
 ```
 - Get your API key from [Groq](https://groq.com/).
 - Ensure the model name matches the supported model version.
