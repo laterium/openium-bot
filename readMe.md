@@ -42,7 +42,7 @@ This repository contains a Discord bot built using Node.js, supporting both Java
 
 ## A.I Groq Configuration
 
-To enable Groq (Groq) integration, add the following variables to your `.env` file:
+To enable Groq ([Groq](https://groq.com/)) integration, add the following variables to your `.env` file:
 ```ini
 GROQ_API_MODEL=YOUR_GROQ_API_MODEL
 GROQ_API_KEY=YOUR_GROQ_API_KEY_HERE
