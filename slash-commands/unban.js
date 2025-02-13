@@ -17,26 +17,30 @@ module.exports = {
         try {
             const bans = await interaction.guild.bans.fetch();
             console.log(`[DEBUG] Total bans: ${bans.size}`);
-
+    
             if (bans.size === 0) {
                 return interaction.respond([]);
             }
-
+    
             const choices = bans.map(ban => ({
                 name: `${ban.user.tag} (${ban.user.id})`,
                 value: ban.user.id,
             })).slice(0, 25);
-
+    
             console.log(`[DEBUG] Autocomplete choices:`, choices);
-
-            const filtered = choices.filter(choice => choice.name.toLowerCase().includes(focusedValue.toLowerCase()));
+    
+            const filtered = choices.filter(choice => 
+                choice.name.toLowerCase().includes(focusedValue.toLowerCase())
+            );
+    
+            console.log(`[DEBUG] Filtered choices:`, filtered);
+            
             await interaction.respond(filtered);
         } catch (error) {
             console.error('[ERROR] Failed to fetch ban list:', error);
             await interaction.respond([]);
         }
     },
-
     async execute(interaction) {
         if (!interaction.member.permissions.has(PermissionFlagsBits.BanMembers)) {
             return interaction.reply({
