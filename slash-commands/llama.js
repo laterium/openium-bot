@@ -13,14 +13,19 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction) {
         const question = interaction.options.getString('question');
-
         await interaction.deferReply();
 
         try {
+            const allowTragedies = process.env.ALLOW_TRAGEDIES === 'true';
+
+            const systemMessage = allowTragedies
+                ? `You are a useful assistant named ${process.env.LLAMA_API_NAME}. You provide concise and friendly answers. Please focus on providing accurate answers.`
+                : `You are a useful assistant named ${process.env.LLAMA_API_NAME}. You provide concise and friendly answers. Please avoid discussing any tragic events or negative topics.`;
+
             const response = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
                 model: process.env.LLAMA_API_MODEL,
                 messages: [
-                    { role: 'system', content: `You are a useful assistant named ${process.env.LLAMA_API_NAME}. You provide concise and friendly answers. please don't give answers that contain tragedies in the world and you must also focus on the correct answer and must also answer with directions that contain SA-MP, Pawn Code Syntax` },
+                    { role: 'system', content: systemMessage },
                     { role: 'user', content: question }
                 ],
                 temperature: 1,
@@ -43,7 +48,7 @@ module.exports = {
             let reply = response.data.choices[0].message.content;
 
             if (reply.length > 2000) {
-                await interaction.editReply('Please use simple Question!');
+                await interaction.editReply('Please use simpler questions!');
             } else {
                 await interaction.editReply(reply);
             }
@@ -58,4 +63,5 @@ module.exports = {
         }
     }
 };
+
 
