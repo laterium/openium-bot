@@ -5,13 +5,20 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('avatar')
-        .setDescription('Displays your avatar!'),
+        .setDescription('Displays the avatar of a user!')
+        .addUserOption(option =>
+            option.setName('user')
+                .setDescription('Select a user to see their avatar')
+                .setRequired(false)),
+
     async execute(interaction) {
+        const user = interaction.options.getUser('user') || interaction.user;
+
         const avatarEmbed = {
             color: 0xfff070,
-            title: `${interaction.user.username}'s Avatar`,
+            title: `${user.username}'s Avatar`,
             image: {
-                url: interaction.user.displayAvatarURL({ dynamic: true, size: 512 }),
+                url: user.displayAvatarURL({ dynamic: true, size: 512 }),
             },
             timestamp: new Date(),
         };
