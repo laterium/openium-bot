@@ -15,9 +15,16 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 
 for (const file of commandFiles) {
     const command = require(path.join(commandsPath, file));
-    commands.push(command.data.toJSON());
-    app.commands.set(command.data.name, command);
+
+    if (command.data && command.data.name) {
+        console.log(`Command name: ${command.data.name}`);
+        commands.push(command.data.toJSON());
+        app.commands.set(command.data.name, command);
+    } else {
+        console.error(`Invalid command file: ${file}. Missing 'data' or 'name' property.`);
+    }
 }
+
 
 async function deployCommands(guildId) {
     try {
