@@ -14,7 +14,6 @@ module.exports = {
             option.setName('minutes')
                 .setDescription('Minutes from now to set the alarm')
                 .setRequired(true)),
-
     async execute(interaction) {
         const hours = interaction.options.getInteger('hours');
         const minutes = interaction.options.getInteger('minutes');
