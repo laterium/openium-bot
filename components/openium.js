@@ -14,7 +14,7 @@ const _prefix = process.env.APP_PREFIX || '!';
 const config = require('../config.json');
 
 /// @System : Auto Save Role
-app.on('guildMemberUpdate', async (oldMember, newMember) => {
+app.on(Events.GuildMemberUpdate, async (oldMember, newMember) => {
     if (!oldMember) {
         try {
             oldMember = await newMember.guild.members.fetch(newMember.id);
@@ -75,7 +75,7 @@ app.on('guildMemberAdd', (member) => {
 });
 
 /// @System : Timeout New Member's
-app.on('guildMemberAdd', async (member) => {
+app.on(Events.GuildMemberAdd, async (message) => {
     try {                  /* 8 minutes */
         await member.timeout(8 * 60 * 1000, 'New member timeout');
         console.log(`Member ${member.user.tag} has been timed out for 8 minutes.` .yellow);
@@ -99,7 +99,7 @@ function fetchRestrictedChannels(callback) {
     });
 }
 
-app.on('messageCreate', blockmessage => {
+app.on(Events.MessageCreate, async (message) => {
     fetchRestrictedChannels((blockedChannelsWregex) => {
         const hasInappropriateContent = config.badWords.some(word => blockmessage.content.toLowerCase().includes(word));
 
@@ -126,7 +126,7 @@ app.on('messageCreate', blockmessage => {
 });
 
 /// @system : No Emoji
-app.on("messageCreate", async (message) => {
+app.on(Events.MessageCreate, async (message) => {
   if (message.author.bot) return;
 
   const emojiRegex = /^(?:<a?:\w+:\d+>|[\p{Emoji}])$/u;
