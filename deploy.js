@@ -25,7 +25,6 @@ for (const file of commandFiles) {
     }
 }
 
-
 async function deployCommands(guildId) {
     try {
         await rest.put(
