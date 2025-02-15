@@ -14,7 +14,6 @@ module.exports = {
             option.setName('options')
                 .setDescription('Comma-separated list of options for the poll (minimum 12 options)')
                 .setRequired(true)),
-
     async execute(interaction) {
         const question = interaction.options.getString('question');
         const optionsString = interaction.options.getString('options');
