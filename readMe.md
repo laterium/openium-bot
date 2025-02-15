@@ -16,7 +16,7 @@ This repository contains a Discord bot built using Node.js, supporting both Java
 1. **Clone the Repository**  
    Clone the repository to your local machine using Git:
    ```bash
-   git clone https://github.com/troubleshoots/openium-bot.git
+   git clone https://github.com/hothots/openium-bot.git
    ```
 
 2. **Set Up Configuration Files**  
