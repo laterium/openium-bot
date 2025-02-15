@@ -1,7 +1,7 @@
 /// @Slash.Commands : trivia.js
 
 const { SlashCommandBuilder } = require('discord.js');
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -10,11 +10,11 @@ module.exports = {
 
     async execute(interaction) {
         try {
-            const response = await fetch('https://opentdb.com/api.php?amount=1&type=multiple');
-            const data = await response.json();
-            const question = data.results[0].question;
-            const correctAnswer = data.results[0].correct_answer;
-            const incorrectAnswers = data.results[0].incorrect_answers;
+            const response = await axios.get('https://opentdb.com/api.php?amount=1&type=multiple');
+            const data = response.data.results[0];
+            const question = data.question;
+            const correctAnswer = data.correct_answer;
+            const incorrectAnswers = data.incorrect_answers;
             const options = [...incorrectAnswers, correctAnswer].sort(() => Math.random() - 0.5);
 
             let pollDescription = `**Trivia Question:**\n${question}\n\n`;
@@ -45,3 +45,4 @@ module.exports = {
         }
     },
 };
+
