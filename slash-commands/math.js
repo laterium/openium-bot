@@ -11,7 +11,6 @@ module.exports = {
             option.setName('expression')
                 .setDescription('The mathematical expression to calculate')
                 .setRequired(true)),
-
     async execute(interaction) {
         const expression = interaction.options.getString('expression');
 
