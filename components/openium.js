@@ -56,7 +56,7 @@ app.on(Events.GuildMemberUpdate, async (oldMember, newMember) => {
     });
 });
 
-app.on('guildMemberAdd', (member) => {
+app.on(Events.GuildMemberAdd, async (member) => {
     const userId = member.id;
 
     const query = 'SELECT role_id FROM user_roles WHERE user_id = ?';
@@ -75,7 +75,7 @@ app.on('guildMemberAdd', (member) => {
 });
 
 /// @System : Timeout New Member's
-app.on(Events.GuildMemberAdd, async (message) => {
+app.on(Events.GuildMemberAdd, async (member) => {
     try {                  /* 8 minutes */
         await member.timeout(8 * 60 * 1000, 'New member timeout');
         console.log(`Member ${member.user.tag} has been timed out for 8 minutes.` .yellow);
