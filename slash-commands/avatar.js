@@ -10,7 +10,6 @@ module.exports = {
             option.setName('user')
                 .setDescription('Select a user to see their avatar')
                 .setRequired(false)),
-
     async execute(interaction) {
         const user = interaction.options.getUser('user') || interaction.user;
 
