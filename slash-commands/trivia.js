@@ -7,7 +7,6 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('trivia')
         .setDescription('Start a random trivia quiz'),
-
     async execute(interaction) {
         try {
             const response = await axios.get('https://opentdb.com/api.php?amount=1&type=multiple');
