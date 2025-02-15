@@ -4,7 +4,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('stats')
+        .setName('info')
         .setDescription('Displays basic information about your Discord account.'),
     async execute(interaction) {
         const user = interaction.user;
