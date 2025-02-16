@@ -30,7 +30,6 @@
     "dotenv": "^16.4.7",
     "erine": "^2.7.5",
     "mysql": "^2.18.1",
-    "mathjs": "^14.2.1",
     "samp-query": "^0.1.5"
   },
   "devDependencies": {
