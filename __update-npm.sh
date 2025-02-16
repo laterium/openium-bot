@@ -6,4 +6,4 @@ ncu -u
 
 npm install
 
-read -p "Press any key to exit..."
+bash
