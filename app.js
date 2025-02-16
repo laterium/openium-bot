@@ -3,7 +3,8 @@
 const { Collection, ActivityType } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
-const mMysql = require('./mysql');const { SlashCommandBuilder } = require('discord.js');
+const mMysql = require('./mysql');
+const { SlashCommandBuilder } = require('discord.js');
 const axios = require('axios');
 require('colors');
 require('ts-node/register');
